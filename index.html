@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReachFlow — Professional Phone Systems for UK Businesses</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0A0E1A; color: #fff; line-height: 1.6; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(10,14,26,0.95); backdrop-filter: blur(12px); border-bottom: 0.5px solid #1E2A4A; padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { display: flex; align-items: center; gap: 10px; }
+  .nav-mark { width: 32px; height: 32px; background: #4F6FFF; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+  .nav-mark svg { width: 16px; height: 16px; }
+  .nav-name { font-size: 16px; font-weight: 600; letter-spacing: 1px; }
+  .nav-cta { background: #4F6FFF; color: #fff; padding: 10px 24px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; }
+
+  .hero { padding: 100px 48px 80px; max-width: 1100px; margin: 0 auto; text-align: center; }
+  .hero-tag { background: #1A2B5A; color: #7B9AFF; font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 20px; letter-spacing: 0.5px; display: inline-block; margin-bottom: 28px; }
+  .hero h1 { font-size: 58px; font-weight: 700; line-height: 1.1; margin-bottom: 24px; }
+  .hero h1 span { color: #4F6FFF; }
+  .hero p { font-size: 18px; color: #8896B3; max-width: 560px; margin: 0 auto 40px; }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary { background: #4F6FFF; color: #fff; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .btn-secondary { background: transparent; color: #7B9AFF; padding: 16px 36px; border-radius: 10px; font-size: 15px; font-weight: 500; text-decoration: none; border: 1px solid #1E2A4A; }
+  .btn-primary:hover { background: #3D5CE8; }
+  .btn-secondary:hover { border-color: #4F6FFF; }
+
+  .section { padding: 80px 48px; max-width: 1100px; margin: 0 auto; }
+  .section-tag { font-size: 11px; color: #4F6FFF; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
+  .section h2 { font-size: 36px; font-weight: 700; margin-bottom: 12px; }
+  .section .sub { font-size: 16px; color: #8896B3; margin-bottom: 48px; max-width: 520px; }
+
+  .divider { border: none; border-top: 0.5px solid #1E2A4A; max-width: 1100px; margin: 0 auto; }
+
+  .problem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .problem-card { background: #0F1628; border: 0.5px solid #1E2A4A; border-radius: 14px; padding: 28px; }
+  .p-icon { font-size: 28px; margin-bottom: 14px; }
+  .problem-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .problem-card p { font-size: 14px; color: #8896B3; line-height: 1.6; }
+
+  .solution-list { display: flex; flex-direction: column; gap: 24px; }
+  .solution-item { display: flex; gap: 20px; align-items: flex-start; background: #0F1628; border: 0.5px solid #1E2A4A; border-radius: 14px; padding: 28px; }
+  .sol-num { width: 36px; height: 36px; background: #1A2B5A; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: #4F6FFF; flex-shrink: 0; }
+  .sol-text h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .sol-text p { font-size: 14px; color: #8896B3; line-height: 1.6; }
+
+  .plans { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .plan { background: #0F1628; border: 0.5px solid #1E2A4A; border-radius: 16px; padding: 36px 32px; }
+  .plan.featured { border: 2px solid #4F6FFF; background: #0D1535; }
+  .plan-badge { background: #4F6FFF; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; display: inline-block; margin-bottom: 20px; }
+  .plan-name { font-size: 18px; font-weight: 600; margin-bottom: 10px; }
+  .plan-price { font-size: 44px; font-weight: 700; margin-bottom: 4px; }
+  .plan-price span { font-size: 16px; color: #8896B3; font-weight: 400; }
+  .plan-setup { font-size: 13px; color: #8896B3; margin-bottom: 28px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+  .plan-features li { font-size: 14px; color: #C4CFDF; display: flex; align-items: center; gap: 10px; }
+  .plan-features li::before { content: '✓'; color: #4F6FFF; font-weight: 700; font-size: 16px; flex-shrink: 0; }
+  .plan-btn { display: block; text-align: center; padding: 14px; border-radius: 10px; font-size: 15px; font-weight: 600; text-decoration: none; }
+  .plan-btn.primary { background: #4F6FFF; color: #fff; }
+  .plan-btn.secondary { background: transparent; color: #7B9AFF; border: 1px solid #1E2A4A; }
+  .plan-btn:hover { opacity: 0.88; }
+
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .stat { background: #0F1628; border: 0.5px solid #1E2A4A; border-radius: 14px; padding: 32px; text-align: center; }
+  .stat .num { font-size: 44px; font-weight: 700; color: #4F6FFF; }
+  .stat .lbl { font-size: 14px; color: #8896B3; margin-top: 8px; }
+
+  .faq { display: flex; flex-direction: column; gap: 16px; }
+  .faq-item { background: #0F1628; border: 0.5px solid #1E2A4A; border-radius: 14px; padding: 28px; }
+  .faq-item h3 { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .faq-item p { font-size: 14px; color: #8896B3; line-height: 1.6; }
+
+  .cta-section { background: #0F1628; border-top: 0.5px solid #1E2A4A; border-bottom: 0.5px solid #1E2A4A; padding: 80px 48px; text-align: center; }
+  .cta-section h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+  .cta-section p { font-size: 16px; color: #8896B3; margin-bottom: 36px; }
+  .cta-email { font-size: 18px; color: #4F6FFF; margin-bottom: 32px; display: block; text-decoration: none; }
+  .cta-email:hover { text-decoration: underline; }
+
+  footer { padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; border-top: 0.5px solid #1E2A4A; }
+  footer p { font-size: 13px; color: #4A5568; }
+  footer a { color: #4F6FFF; text-decoration: none; }
+
+  @media (max-width: 700px) {
+    nav { padding: 16px 24px; }
+    .hero { padding: 70px 24px 60px; }
+    .hero h1 { font-size: 36px; }
+    .section { padding: 60px 24px; }
+    .problem-grid { grid-template-columns: 1fr; }
+    .plans { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: 1fr; }
+    footer { padding: 32px 24px; flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <div class="nav-mark">
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 2L6 8h3L5 14l7-8H9L11 2z" fill="white"/>
+      </svg>
+    </div>
+    <span class="nav-name">REACHFLOW</span>
+  </div>
+  <a href="mailto:hello.reachflow@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">⚡ Professional phone systems for UK businesses</div>
+  <h1>Make every call count.<br><span>Sound like the big players.</span></h1>
+  <p>Most UK businesses lose customers the moment someone calls and hears a bare ring tone. ReachFlow fixes that in 48 hours — no tech knowledge needed.</p>
+  <div class="hero-btns">
+    <a href="mailto:hello.reachflow@gmail.com?subject=I want to get started with ReachFlow" class="btn-primary">Get started today</a>
+    <a href="#packages" class="btn-secondary">View packages</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-tag">The problem</div>
+  <h2>Your phone is costing you clients</h2>
+  <p class="sub">When someone calls your business for the first time, that first second is everything.</p>
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="p-icon">📞</div>
+      <h3>No professional greeting</h3>
+      <p>Callers hear a bare ring or basic voicemail with no brand presence — instantly feels small and unprepared.</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">🔀</div>
+      <h3>No call routing</h3>
+      <p>Every call goes to one person regardless of what the customer needs — wasted time for everyone involved.</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">🌙</div>
+      <h3>Missed out-of-hours calls</h3>
+      <p>Potential clients calling after 5pm get nothing. No message, no direction — they call your competitor instead.</p>
+    </div>
+    <div class="problem-card">
+      <div class="p-icon">📉</div>
+      <h3>Looks smaller than you are</h3>
+      <p>Every enterprise business has an automated system. Without one, you signal you're not at that level yet.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-tag">The solution</div>
+  <h2>What ReachFlow sets up for you</h2>
+  <p class="sub">We handle everything. You're live in 48 hours, sounding like a company ten times your size.</p>
+  <div class="solution-list">
+    <div class="solution-item">
+      <div class="sol-num">1</div>
+      <div class="sol-text">
+        <h3>Professional branded greeting</h3>
+        <p>Every caller hears a polished, professional welcome message the moment they dial — using your business name and tone of voice.</p>
+      </div>
+    </div>
+    <div class="solution-item">
+      <div class="sol-num">2</div>
+      <div class="sol-text">
+        <h3>Smart call routing</h3>
+        <p>"Press 1 for sales, press 2 for support" — callers get to the right person instantly, every time, without confusion.</p>
+      </div>
+    </div>
+    <div class="solution-item">
+      <div class="sol-num">3</div>
+      <div class="sol-text">
+        <h3>24/7 out-of-hours handling</h3>
+        <p>After-hours callers hear a custom message and can leave a voicemail. You get a notification straight to your phone so no lead is ever missed.</p>
+      </div>
+    </div>
+    <div class="solution-item">
+      <div class="sol-num">4</div>
+      <div class="sol-text">
+        <h3>Keep your existing number</h3>
+        <p>No need to change anything customers already know. We forward your existing number through the system — completely seamless.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section" id="packages">
+  <div class="section-tag">Packages</div>
+  <h2>Two ways to get started</h2>
+  <p class="sub">No long contracts. No hidden fees. Pick what suits your business.</p>
+  <div class="plans">
+    <div class="plan">
+      <div class="plan-name">Basic</div>
+      <div class="plan-price">£499 <span>one time</span></div>
+      <div class="plan-setup">Full setup, yours to keep forever</div>
+      <ul class="plan-features">
+        <li>Professional greeting recorded</li>
+        <li>Up to 3 call routing options</li>
+        <li>Out-of-hours voicemail</li>
+        <li>48 hour setup</li>
+        <li>You manage it after setup</li>
+      </ul>
+      <a href="mailto:hello.reachflow@gmail.com?subject=Basic Package Enquiry" class="plan-btn secondary">Get in touch</a>
+    </div>
+    <div class="plan featured">
+      <div class="plan-badge">Most popular</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-price">£59 <span>/ month</span></div>
+      <div class="plan-setup">+ £199 one-time setup fee</div>
+      <ul class="plan-features">
+        <li>Everything in Basic</li>
+        <li>Unlimited call routing options</li>
+        <li>We manage and update it for you</li>
+        <li>Greeting updated any time on request</li>
+        <li>Priority support</li>
+        <li>Monthly call summary report</li>
+      </ul>
+      <a href="mailto:hello.reachflow@gmail.com?subject=Pro Package Enquiry" class="plan-btn primary">Get started</a>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-tag">By the numbers</div>
+  <h2>Simple, fast, effective</h2>
+  <p class="sub">We keep it straightforward so you can focus on running your business.</p>
+  <div class="stats">
+    <div class="stat">
+      <div class="num">48hrs</div>
+      <div class="lbl">Average setup time</div>
+    </div>
+    <div class="stat">
+      <div class="num">100%</div>
+      <div class="lbl">UK-based businesses served</div>
+    </div>
+    <div class="stat">
+      <div class="num">£0</div>
+      <div class="lbl">Hidden fees, ever</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<div class="section">
+  <div class="section-tag">FAQ</div>
+  <h2>Common questions</h2>
+  <p class="sub">Everything you need to know before getting started.</p>
+  <div class="faq">
+    <div class="faq-item">
+      <h3>Do I need to change my existing phone number?</h3>
+      <p>No. We simply forward your existing number through the ReachFlow system. Your customers keep dialling the same number they always have.</p>
+    </div>
+    <div class="faq-item">
+      <h3>How long does setup actually take?</h3>
+      <p>Most businesses are live within 48 hours of getting started. We handle the entire setup — you just need to answer a few questions about your business and we do the rest.</p>
+    </div>
+    <div class="faq-item">
+      <h3>What if I want to change my greeting later?</h3>
+      <p>On the Pro plan, just email us and we'll update it for you — no charge. On Basic, we can update it for a small one-off fee.</p>
+    </div>
+    <div class="faq-item">
+      <h3>Is there a contract?</h3>
+      <p>No long-term contracts on the Pro plan. It's a simple monthly arrangement — cancel any time with 30 days notice.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Ready to sound more professional?</h2>
+  <p>Get in touch today and we'll have you set up within 48 hours.</p>
+  <a href="mailto:hello.reachflow@gmail.com" class="cta-email">hello.reachflow@gmail.com</a>
+  <div class="hero-btns">
+    <a href="mailto:hello.reachflow@gmail.com?subject=I want to get started with ReachFlow" class="btn-primary">Get started today</a>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 ReachFlow. All rights reserved.</p>
+  <p>Questions? <a href="mailto:hello.reachflow@gmail.com">hello.reachflow@gmail.com</a></p>
+</footer>
+
+</body>
+</html>
